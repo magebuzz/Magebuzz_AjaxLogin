@@ -1,0 +1,229 @@
+<?php 
+/*
+ * @copyright   Copyright ( c) 2014 www.magebuzz.com
+ */
+?>
+
+<div id='form-login' style=" float: left; clear: both;">
+<div id="registered-user-login">
+  <div class="page-title">
+    <h1><?php echo $this->__('Sign in') ?></h1>
+  </div>
+  <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+  <div class="content">    
+    <form action="javascript:loginFormAcion();" method="post" id="login-form-validate">
+			<p id="login_error" ></p>
+      <ul class="form-list">      
+        <li>
+          <label for="emaillogin" class="required"><?php echo $this->__('Email Address') ?><em>*</em></label>        
+          <input type="text" name="username" value="<?php echo $this->htmlEscape($this->getUsername()) ?>" id="emaillogin" class="input-text required-entry validate-email" title="<?php echo $this->__('Email Address') ?>" />          
+        </li>
+        <li>
+          <label for="passlogin" class="required"><?php echo $this->__('Password') ?><em>*</em></label>  
+          <input type="password" name="password" class="input-text required-entry validate-password" id="passlogin" title="<?php echo $this->__('Password') ?>" />          
+        </li>   
+        <?php echo $this->getChildHtml('captchaLogin'); ?>     
+        <li>          
+          <button type="submit" class="button" title="<?php echo $this->__('Login') ?>" name="sendlogin" id="sendlogin"><span><span><?php echo $this->__('Login') ?></span></span></button>
+					<p><a href="javascript:void(0);" onclick="javascript:showForgotForm();" class="f-right"><?php echo $this->__('Forgot Your Password?') ?></a></p>
+        </li>     
+      </ul>
+      <div class="link-create-account">
+        <p><?php echo $this->__("Don't you have an account?") ?> </p>
+        <button type="button" class="button" onclick="javascript:submitPopupRegister();" title="<?php echo $this->__('Login') ?>" name="create_new_account" id="create-new-account"><span><span><?php echo $this->__('Create an Account') ?></span></span></button>  
+      </div>
+    </form>
+  </div>  
+</div>
+<div id="form-register" style="display:none;">
+  <div>
+    <div class="page-title">
+      <h1><?php echo $this->__('Create an Account') ?></h1>
+    </div>
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <form action="javascript:registerAction();" method="post" id="register-form">
+    <div style="color: green;font-size: 11px;margin-left: 43px;" id="register_success" ></div>
+    <div class="content" id="register-content">    
+			<p id="register_error"></p>
+      <p id="register_success"></p>
+      <ul class="form-list">
+        <li>
+						<label class="required" for="firstname"><?php echo $this->__('First Name') ?><em>*</em></label>
+						<input type="text" name="firstname" id="firstname" class="input-text required-entry" title="<?php echo $this->__('First Name') ?>" />      
+				</li>
+				<li>
+              <label for="lastname" class="required"><?php echo $this->__('Last Name') ?><em>*</em></label>
+              <input type="text" name="lastname" class="input-text required-entry" id="lastname" title="<?php echo $this->__('Last Name') ?>" />
+				</li>
+				<li>	
+            <label for="email-register" class="required"><?php echo $this->__('Email Address') ?><em>*</em></label>        
+            <input type="text" name="email" id="email-register" class="input-text required-entry validate-email validate-check-mail" title="<?php echo $this->__('Email Address') ?>" />
+				</li>
+				<li>	
+            <label for="pass-register" class="required"><?php echo $this->__('Password') ?><em>*</em></label>      
+            <input type="password" value="" name="password" class="input-text required-entry validate-password" id="pass-register" title="<?php echo $this->__('Password') ?>" />
+				</li>
+				<li>	
+            <label for="confirmation" class="required"><?php echo $this->__('Confirm Password') ?><em>*</em></label>
+            <input type="password" value="" name="confirmation" title="<?php echo $this->__('Confirm Password') ?>" id="confirmation" class="input-text required-entry validate-cpassword" />          
+        </li>
+          <?php echo $this->getChildHtml('captchaCreate'); ?>    
+        <li class="fields">
+          <?php if(Mage::helper('ajaxlogin')->showNewsletterSubscription()):?>                   
+            <div class="field">     
+              <label><?php echo $this->__('Sign Up for Newsletter') ?></label>          
+              <input type="checkbox" value="1" name="newletter" title="<?php echo $this->__('Sign Up for Newsletter') ?>" id="newletter" />
+            </div>
+          <?php endif;?>
+          <?php if(Mage::helper('ajaxlogin')->showTermsAndConditions()):?>                     
+          <div class="field">                                                                                       
+            <label for="condition" class="required"><?php echo $this->__('Terms of conditions') ?><em>*</em></label>
+            <input type="checkbox" value="1" name="condition" title="<?php echo $this->__('Terms of conditions') ?>" id="condition" class="checkbox required-entry" />
+          </div>
+          <?php endif;?>          
+        </li>     
+        <li>                   
+          <button type="submit" class="button left" title="<?php echo $this->__('Submit') ?>" name="send" id="send2"><span><span><?php echo $this->__('Submit') ?></span></span></button>                   
+        </li>     
+      </ul>
+      <div class="link-login">
+        <p><?php echo $this->__("Already have an Account ?") ?> </p>
+        <button type="button" class="button" onclick="javascript:submitLoginPopup();" title="<?php echo $this->__('Login') ?>" name="btn-login" id="btn-login"><span><span><?php echo $this->__('Login') ?></span></span></button>  
+      </div>
+    </div>
+  </div>  
+  </form>  
+</div>
+
+<div id="form-forgot" style="display: none;">
+  <div class="page-title">
+    <h1><?php echo $this->__('Forgot Your Password?') ?></h1>
+  </div>
+  <div class="message-forgot" id="message-forgot" style="font-size: 13px; color: green;"></div>
+  <form action="javascript:forgotFormAction();" method="post" id="forgot-form">
+    <div class="content" id="content">    
+			<p id="forgot-error"></p>
+      <ul class="form-list"> 
+         
+        <li>
+          <label for="email-forgot" class="required"><em>*</em><?php echo $this->__('Email Address') ?></label>
+          <div class="input-box">  
+            <input type="text" name="email-forgot" id="email-forgot" class="input-text required-entry validate-email validate-check-mail" title="<?php echo $this->__('Email Address') ?>" />          
+          </div>
+        </li> 
+        <?php echo $this->getChildHtml('captchaForgot'); ?>   
+        <li>         
+          <button type="submit" class="button"  title="<?php echo $this->__('Forgot Password') ?>" name="send" id="send2"><span><span><?php echo $this->__('Forgot Password') ?></span></span></button>                           
+        </li>                   
+      </ul>
+      <p class="back-link"><a href="#" style="float: left" onclick="javascript:submitLoginPopup();"><?php echo $this->__("&laquo; Back to Login") ?></a></p>  
+    </div>    
+  </form>
+</div>
+<script type="text/javascript">
+  //<![CDATA[
+  var dataForm = new VarienForm('register-form', true);    
+  function submitLoginPopup() {     
+    document.getElementById('registered-user-login').style.display = "block";
+    document.getElementById('form-register').style.display = "none";
+    document.getElementById('form-forgot').style.display = "none"; 
+  }
+  var dataForm = new VarienForm('login-form-validate', true);
+  function submitPopupRegister() {
+    document.getElementById('registered-user-login').style.display = "none";
+    document.getElementById('form-register').style.display = "block";  
+    document.getElementById('form-forgot').style.display = "none";       
+  }
+  var dataForm = new VarienForm('forgot-form', true);
+  function showForgotForm() { 
+    document.getElementById('registered-user-login').style.display = "none";
+    document.getElementById('form-register').style.display = "none";          
+    document.getElementById('form-forgot').style.display = "block"; 
+  }
+
+  function forgotFormAction(){
+    jQuery.fancybox.showLoading(); 
+    var email_value = document.getElementById("email-forgot").value;
+    var captcha = document.getElementById("captcha_user_forgotpassword").value;
+    var ajaxurl = "<?php echo Mage::getBaseUrl() . 'ajaxlogin/index/forgotpassword?'?>"+'captcha='+captcha+'&email='+email_value;
+    new Ajax.Request(ajaxurl, {
+      method: 'Get',
+      onSuccess: function(forgot_success_give) {
+        if(forgot_success_give.responseText =='okforgot')
+          {   
+          jQuery.fancybox.hideLoading();         
+          document.getElementById('content').style.display = "none";          
+          document.getElementById('message-forgot').innerHTML= 'If there is an account associated with '+email_value+' you will receive an email with a link to reset your password.';                            
+        }else{  
+          jQuery.fancybox.hideLoading(); 
+          //jQuery.fancybox.close();  
+          document.getElementById('forgot-error').innerHTML= '<div class="error-message">' + forgot_success_give.responseText + '</div>';                       
+        }
+      }
+    });
+  }
+  function registerAction()
+  {     
+    jQuery.fancybox.showLoading(); 
+    var dataform = jQuery('form#register-form').serialize();
+    var captcha = document.getElementById("captcha_user_create").value; 
+    <?php $emailRegister =''?>+email
+    var email = document.getElementById("email-register").value   ;        
+    document.getElementById('register_error').innerHTML="";   
+    var ajaxurl = "<?php echo Mage::getBaseUrl() . 'ajaxlogin/index/registerpost?'?>"+dataform+'&captcha='+captcha;
+    new Ajax.Request(ajaxurl,{
+      method:'Get',
+      onSuccess: function(register_success_give) {       
+        var pattern_url = /^(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+        var url_value=pattern_url.test(register_success_give.responseText);
+        if(url_value ==false)
+          {
+          if(register_success_give.responseText =='confirmation')
+            {  
+            jQuery.fancybox.hideLoading();  
+            document.getElementById('register-content').style.display = "none";        
+            document.getElementById('register_success').innerHTML='Account confirmation is required. Please, check your email for the confirmation link. To resend the confirmation email please <a href="<?php echo Mage::helper('customer')->getEmailConfirmationUrl()?>">click here</a>.';
+            return false;
+          }   
+          jQuery.fancybox.hideLoading();          
+          document.getElementById('register_error').innerHTML='<div class="error-message">'+ register_success_give.responseText+ '</div>';
+          return false;
+        }
+        else
+          {       
+          jQuery.fancybox.hideLoading();                 
+          jQuery.fancybox.close(); 
+          window.location.href=register_success_give.responseText;
+        }
+      }
+    });
+  }  
+
+  function loginFormAcion(){  
+    jQuery.fancybox.showLoading();
+    var username = document.getElementById("emaillogin").value;
+    var password = document.getElementById("passlogin").value;
+    var captcha = document.getElementById("captcha_user_login").value;       
+    var ajaxurl = "<?php echo Mage::getBaseUrl() . 'ajaxlogin/index/loginpost?'?>"+'username='+username+'&password='+password+'&captcha='+captcha;
+    new Ajax.Request(ajaxurl, {
+      method: 'Get',
+      onSuccess: function(login_success_give) {         
+        var pattern_url = /^(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+        var url_value=pattern_url.test(login_success_give.responseText);
+        if(url_value == false)
+          {
+          jQuery.fancybox.hideLoading();                 
+          document.getElementById('login_error').innerHTML='<div class="error-message">'+ login_success_give.responseText + '</div>';
+          document.getElementById('passlogin').innerHTML="";
+        }
+        else{
+          jQuery.fancybox.hideLoading();
+          jQuery.fancybox.close();
+          window.location.href=login_success_give.responseText; 
+        }     
+      }
+    });
+  }
+
+  //]]>
+    </script>

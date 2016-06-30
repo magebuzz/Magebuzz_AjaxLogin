@@ -1,0 +1,11 @@
+<?php 
+/*
+ * @copyright   Copyright ( c) 2014 www.magebuzz.com
+ */
+?>
+<?php $customeLogin =  $this->helper('customer')->isLoggedIn(); ?>
+<?php if(!$customeLogin): ?> 
+<script type="text/javascript"> 
+  jQuery(".popup").fancybox();
+</script>  
+<?php endif;?>

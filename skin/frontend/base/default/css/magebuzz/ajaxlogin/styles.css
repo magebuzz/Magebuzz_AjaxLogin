@@ -1,0 +1,80 @@
+/* Social login button on Customer Login page */
+.fancybox-wrap .fancybox-skin{padding:0px!important;}
+#registered-user-login .page-title,#form-forgot .page-title, #form-register .page-title{background: url(images/bkg_title.png) repeat-x scroll 0 0 transparent; margin:0; border-radius:5px 5px 0 0;}
+#registered-user-login .page-title h1,#form-forgot .page-title h1, #form-register .page-title h1{color:#FFFFFF; padding:5px 10px; font-size:16px; font-weight:bold; margin:0;}
+#form-login{text-align:left; width:420px;}
+#form-login #registered-user-login{}
+#form-login #registered-user-login .content, #form-login #form-forgot .content, #form-login #form-register .content{padding:10px; overflow:hidden;}
+#form-login #form-register{}
+#form-login #form-forgot{}
+#form-login #registered-user-login .form-list label{margin-right:10px; min-width:90px;}
+#form-login #registered-user-login .form-list label.required em{position:relative; right:-3px; float:none;}
+/*#form-login #registered-user-login .form-list input.input-text{width:200px;}*/
+#form-login #form-register .form-list .field{float:left; width:190px;}
+#form-login #form-register .form-list label{margin-right:10px; min-width:115px;}
+#form-login #form-register .form-list label.required em{position:relative; right:-3px; float:none;}
+/*#form-login #form-register .form-list input.input-text{width:200px;}*/
+#form-login #registered-user-login .link-create-account{
+  border-top: 1px dotted #CCCCCC;
+  float: left;
+  padding: 10px 0 0;
+  margin:10px 0 0;
+  text-align: right;
+  width: 100%;
+}
+#form-login #registered-user-login .link-create-account p{float:left;}
+#form-login #registered-user-login .link-create-account button.button{float:right;}
+#form-register .link-login{
+  border-top: 1px dotted #CCCCCC;
+  float: left;
+  padding: 10px 0 0;
+  margin:10px 0 0;
+  text-align: right;
+  width: 100%;
+}
+#form-register .link-login p{float:left;}
+#form-register .link-login button.button{float:right;}
+#form-login #login-with-social-network{float:right; width:162px;}
+/*#form-login #sendlogin{margin-left:100px;}*/
+#form-forgot{}
+#form-forgot .page-title{margin:0!important;}
+#login_error .error-message,#register_error .error-message, #forgot-error .error-message{background-color:#faebe7; color:#df280a; font-size:11px; padding:5px;}
+.fancybox-inner button.button::-moz-focus-inner { padding:0; border:0; } /* FF Fix */
+.fancybox-inner button.button { -webkit-border-fit:lines; } /* <- Safari & Google Chrome Fix */
+.fancybox-inner button.button{ overflow:visible; width:auto; border:0; padding:0; margin:0; background:transparent; cursor:pointer;height: 27px!important; float: left; }
+.fancybox-inner button.button span{
+	background: url(images/bkg_button.png) no-repeat scroll 0 0 transparent;
+	color: white;
+	float: left;
+	font-size: 12px;
+	font-weight: bold;
+	height: 27px;
+	text-transform: uppercase;
+	line-height: 27px;
+	padding: 0 0 0 7px;
+	position: relative;
+	text-align: center;
+	white-space: nowrap;
+	overflow:visible; 
+	border:0 none;
+	
+}
+.fancybox-inner button.button span span{background-position: 100% 0; padding: 0 8px 0 0; font-size:12px; font-weight:normal; color:white; text-transform: capitalize;}
+
+.fancybox-inner button.button:hover span{
+	background: url(images/bkg_button-hover.png) no-repeat scroll 0 0 transparent;
+	color: white;
+	float: left;
+	font-size: 12px;
+	font-weight: bold;
+	height: 27px;
+	text-transform: uppercase;
+	line-height: 27px;
+	padding: 0 0 0 7px;
+	position: relative;
+	text-align: center;
+	white-space: nowrap;
+	overflow:visible; 
+	
+}
+.fancybox-inner button.button:hover span span{background-position: 100% 0; padding: 0 8px 0 0; font-size:12px; font-weight:normal; color:white; text-transform: capitalize;}

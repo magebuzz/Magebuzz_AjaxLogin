@@ -1,0 +1,21 @@
+<?php 
+/*
+ * @copyright   Copyright ( c) 2014 www.magebuzz.com
+ */
+?>
+<?php $helper = Mage::helper('ajaxlogin'); ?>
+<?php $customeLogin =  Mage::helper('customer')->isLoggedIn(); ?>
+<?php if (!$customeLogin): ?>
+<script type="text/javascript">       
+	<?php if ($helper->showPopupOnHomePage()):?>
+		jQuery(document).ready(function() {
+			jQuery(".loginpopup").fancybox({
+				afterClose: function() {             
+				}
+			}).trigger('click');
+		});
+	<?php endif?>
+	jQuery(".popup").fancybox();       
+</script>  
+<?php endif;?>
+<a class="loginpopup fancybox.ajax" style="display: none" href="<?php echo Mage::getUrl('ajaxlogin/index/login');?>"></a>

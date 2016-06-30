@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <default>
+    <reference name="head">
+      <block type="core/template" name="ajaxlogin.head" template="ajaxlogin/head.phtml"/>        
+      <action method="addCss"><stylesheet>css/magebuzz/ajaxlogin/jquery.fancybox.css</stylesheet></action>
+      <action method="addCss"><stylesheet>css/magebuzz/ajaxlogin/styles.css</stylesheet></action>
+       <action method="addJs"><file>mage/captcha.js</file></action>
+    </reference>
+    <reference name="before_body_end">
+      <block type="ajaxlogin/ajaxlogin" name="ajaxlogin" template="ajaxlogin/openlogin.phtml" />
+    </reference>        
+  </default>
+  <cms_index_index>
+    <reference name="content">
+      <block type="ajaxlogin/ajaxlogin" name="ajaxlogin" template="ajaxlogin/ajaxlogin.phtml" />
+    </reference>    
+  </cms_index_index>
+ <!-- <ajaxlogin_index_index>
+    <reference name="content">
+      <block type="core/template" name="ajaxlogin" template="ajaxlogin/openloin.phtml" />
+    </reference>
+  </ajaxlogin_index_index> -->
+  <ajaxlogin_index_login>
+    <reference name="content">
+      <block type="ajaxlogin/ajaxlogin" name="root" output="toHtml" template="ajaxlogin/login.phtml" >
+                <block type="captcha/captcha" name="captchaLogin">
+                    <reference name="head">
+                        <action method="addJs"><file>mage/captcha.js</file></action>
+                    </reference>
+                    <action method="setFormId"><formId>user_login</formId></action>
+                    <action method="setImgWidth"><width>230</width></action>
+                    <action method="setImgHeight"><width>50</width></action>
+                </block> 
+                <block type="captcha/captcha" name="captchaCreate">
+                    <reference name="head">
+                        <action method="addJs"><file>mage/captcha.js</file></action>
+                    </reference>
+                    <action method="setFormId"><formId>user_create</formId></action>
+                    <action method="setImgWidth"><width>230</width></action>
+                    <action method="setImgHeight"><width>50</width></action>
+                </block>
+                <block type="captcha/captcha" name="captchaForgot">
+                    <reference name="head">
+                        <action method="addJs"><file>mage/captcha.js</file></action>
+                    </reference>
+                    <action method="setFormId"><formId>user_forgotpassword</formId></action>
+                    <action method="setImgWidth"><width>230</width></action>
+                    <action method="setImgHeight"><width>50</width></action>
+                </block>
+      
+      </block>     
+    </reference>
+  </ajaxlogin_index_login>
+  <customer_logged_out>
+    <reference name="top.links">    
+      <!-- change Url Login-->
+      <action method="removeLinkByUrl" ifconfig="ajaxlogin/general/enable_loginpopup" ifvalue="1"><url helper="customer/getLoginUrl"/></action>
+      <action method="addLink" ifconfig="ajaxlogin/general/enable_loginpopup" ifvalue="1" translate="label title" module="ajaxlogin"><label>Log In</label><url helper="ajaxlogin/getLoginUrl"/><title></title><prepare/><urlParams/><position>100</position><li/><a>class="popup fancybox.ajax"</a></action>   
+      <!--change Url My Account-->
+      <action method="removeLinkByUrl" ifconfig="ajaxlogin/general/enable_loginpopup" ifvalue="1"><url helper="customer/getAccountUrl"/></action>
+      <action method="addLink" ifconfig="ajaxlogin/general/enable_loginpopup" ifvalue="1" translate="label title" module="ajaxlogin"><label>My Account</label><url helper="ajaxlogin/getAccountUrl"/><title></title><prepare/><urlParams/><position>10</position><li/><a>class="popup fancybox.ajax"</a></action>
+      <!-- change url Wishlist-->
+      <action method="removeLinkBlock" ifconfig="ajaxlogin/general/enable_loginpopup" ifvalue="1"><blockName>wishlist_link</blockName></action>
+      <action method="addLink" ifconfig="ajaxlogin/general/enable_loginpopup" ifvalue="1" translate="label title" module="ajaxlogin"><label>My Wishlist</label><url helper="ajaxlogin/getLoginUrl"/><title></title><prepare/><urlParams/><position>30</position><li/><a>class="popup fancybox.ajax"</a></action>
+    </reference>
+  </customer_logged_out>
+</layout> 
